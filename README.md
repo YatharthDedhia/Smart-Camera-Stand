@@ -27,7 +27,7 @@ It is a function which has a value 0 until a specified value, and then it follow
  2. **Convolutional Neural Network:** eg: used in Image applications.
  3. **Recurrent Neural Network:** eg: used in sequential 1D data such as audio.
  
- ![Types of Neural Network Structure](1.png)
+ ![Types of Neural Network Structure](Assets/1.png)
 
  ### Structured Data:
  * Database of Input features is available eg: tabular form, etc.
