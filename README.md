@@ -71,16 +71,16 @@
 * **X** is a matrix having **Nx** number of rows and **m** columns.
 * **Y** matrix is the matrix containing outputs of each example.
 * **Y** has m columns (shape is (1,m)).
-* **y<sup>^</sup>** is the probability that y = 1 with input x. 
+* **p** is the probability that y = 1 with input x. 
 * **w** is **weight** corresponding to each pixel/ neuron 
 * **b** is **bias** corresponding to each neuron eqn.
 ---
 >## Lecture 2:
 ## LOGISTIC REGRESSION  
-* ## **y<sup>^</sup> = sig(w<sup>T</sup> + b)**
-* ### Here, **z = w<sup>T</sup> + b**
-* ### Hence, y<sup>^</sup> = sig(z))
-* ### Sig is a function which bounds the sum between 0 and 1, because y<sup>^</sup> is a probability hence it lies between 0 and 1.
+* ## **p = sig(w<sup>T</sup>x + b)**
+* ### Here, **z = w<sup>T</sup>x + b**
+* ### Hence, p = sig(z))
+* ### Sig is a function which bounds the sum between 0 and 1, because p is a probability hence it lies between 0 and 1.
 
 * This function can be sigmoid, ReLU, etc.
 * ### ReLU function: Rectified Linear Unit function
@@ -93,13 +93,58 @@
 >## Lecture 3:
 ## COST FUNCTION
 
-* ### **Loss** is the deviation of y<sup>^</sup> from y.
+* ### **Loss** is the deviation of p from y.
 
 * It is preferable that the loss function is a **convex function**, for finding global minima relatively easily.
 
 * Loss function used here is:
-    ## **loss = -( ylog(y<sup>^</sup>) + (1-y) log(1-y<sup>^</sup>) )**
+    ## **L(p,y) = -( ylog(p) + (1-y) log(1-p) )**
 
 * Loss is measured over each training example.
 * **Cost function** is measured over entire training set.
     ## **cost = avg(loss over of each example)**
+---
+>## Lecture 4:
+## GRADIENT DESCENT
+
+* Gradient descent is used to reduce the value of Loss function L, which is a function of 2 variables: w and b.
+* This is done by finding the minima of the function L(w,b).
+* ## **w = w - a(dw)**
+    * Where a is the **learning rate**.
+    * **dw** is the **Partial derivative**: *rate of change of L wrt w*: **dL(w,b)/dw**
+* ## **b = b - a(db)**
+    * **db** is the **Partial derivative**: *rate of change of L wrt b*: **dL(w,b)/db**
+
+* **Forward Propogation:** Calculating the output based on the input.
+* **Backward Propogation:** Improvising on the basis of Output obtained and Output desired.
+---
+## Application:
+* Avoid using for loop; use **Vectorization** instead by using **Matrices**. 
+* z = w<sup>T</sup>x + b
+    * Here, w<sup>T</sup> and x both are Matrices.
+* instead of using for loop to multiply the 2 matrices, use inbuilt function instead.
+    ```
+    import numpy as np
+    z = np.dot(w,x) + b
+    ```
+* **np.zeros()** function.
+    * it can be used for summation.
+    * it creates an array of mentioned size with each element 0.
+* **np.exp()** 
+    * is used to exponent each element of a matrix.
+* **np.log()**
+    * used to log each element of a matrix.
+* **np.sum(axis = t)** is used to compute the of the elements of the matrix in a particular direction.
+    * t = 0: vertical sum (c1 sum, c2 sum ,etc)
+    * t = 1: horizontal sum (r1 sum, r2 sum, etc)
+* **matrix.T** Transposes the said matrix
+* check documentation of **Numpy** library for more functions.
+---
+**Note:** For derivatives, differentiate the function on paper and then formulize it in code (cannot differentiate in code using any function).
+
+---
+ # Jupyter Notebook:
+ * **shift+enter:** run a code block
+ * supports markdown language
+ * restart kernel to stop running the code.
+ 
