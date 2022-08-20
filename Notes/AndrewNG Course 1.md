@@ -27,7 +27,7 @@
  2. **Convolutional Neural Network:** eg: used in Image applications.
  3. **Recurrent Neural Network:** eg: used in sequential 1D data such as audio.
  
- ![Types of Neural Network Structure](Assets/Types_of_neural_networks.png)
+ ![Types of Neural Network Structure](/Assets/Types_of_neural_networks.png)
 
  ### Structured Data:
  * Database of Input features is available eg: tabular form, etc.
@@ -89,7 +89,7 @@
 * ### ReLU function: Rectified Linear Unit function
     It is a function which has a value 0 until a certain value, and then it follows the line x=y
 
-![Logistic Regression model and Sigmoid function](Assets/Logistic_regression.png)
+![Logistic Regression model and Sigmoid function](/Assets/Logistic_regression.png)
 
 
 ---
@@ -192,7 +192,7 @@
 ---
 
 ## Structure of Neural Network:
-![Neural Network Structure](Assets/Neural_Network_Structure.png)
+![Neural Network Structure](/Assets/Neural_Network_Structure.png)
 
 ># Activation Functions for Neural Network:
 * 2 activation functions are required for 2 layered network (one for each Z).
@@ -208,7 +208,7 @@
 * Alternative is ReLU where the slope 0 for negative Z and the slope is 1 for positive values of Z.
 
 ># Derivatives of Activation Functions:
-![Derivatives of Activation Functions](Assets/Activation_Function_Derivatives.jpg)
+![Derivatives of Activation Functions](/Assets/Activation_Function_Derivatives.jpg)
 
 ## **Initialization of weights and biases:**
 * W1 and W2 is not initialized to 0, instead initialize it **Randomly**
