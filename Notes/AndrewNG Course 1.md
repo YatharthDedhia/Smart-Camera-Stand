@@ -61,7 +61,11 @@
 * A Feature Vector has **Nx** number of rows (total number of pixels).
 * Each pixel of is a **Neuron**
 ---
-# NOTATIONS:
+# **LOGISTIC REGRESSION**
+* Contains only 1 layer (No hidden layers): i.e. Output layer.
+* Input layer is not counted as a layer. It is labelled as layer 0.
+* contains only 1 node (output layer/node)
+## NOTATIONS:
 * ### **Note**: Capital Case and Small Case notations are *different*. 
 * Each testing or training example is represented by **(x,y)**:
     * **x** : Feature Vector of the example.
@@ -75,8 +79,7 @@
 * **w** is **weight** corresponding to each pixel/ neuron 
 * **b** is **bias** corresponding to each neuron eqn.
 ---
->## Lecture 2:
-## LOGISTIC REGRESSION  
+>## Lecture 2: 
 * ## **p = sig(w<sup>T</sup>x + b)**
 * ### Here, **z = w<sup>T</sup>x + b**
 * ### Hence, p = sig(z))
@@ -118,7 +121,7 @@
 * **Forward Propogation:** Calculating the output based on the input.
 * **Backward Propogation:** Improvising on the basis of Output obtained and Output desired.
 ---
-## Application:
+>## Application:
 * Avoid using for loop; use **Vectorization** instead by using **Matrices**. 
 * z = w<sup>T</sup>x + b
     * Here, w<sup>T</sup> and x both are Matrices.
@@ -138,13 +141,76 @@
     * t = 0: vertical sum (c1 sum, c2 sum ,etc)
     * t = 1: horizontal sum (r1 sum, r2 sum, etc)
 * **matrix.T** Transposes the said matrix
+* **M1*M2** does **Elemental multiplication** (multiplying all the corresponding elements)
+* **np.dot()** does **Vector/ matrix multiplication**
 * check documentation of **Numpy** library for more functions.
 ---
 **Note:** For derivatives, differentiate the function on paper and then formulize it in code (cannot differentiate in code using any function).
 
 ---
- # Jupyter Notebook:
+ ># Jupyter Notebook:
  * **shift+enter:** run a code block
  * supports markdown language
  * restart kernel to stop running the code.
- 
+ ---
+ # WEEK 3:
+# **NEURAL NETWORK:**
+* Neural network is just like Logistic regression, but with additional layers (hidden layers).
+* Input layer is layer 0, Hidden layer 1 (layer 1), and Output layer (layer 2).
+* Hidden layer consists of multiple nodes.
+
+# Notation:
+* ## **X<sub>i</sub><sup>[L].(m)</sup>**
+    * L is the layer number
+    * m is the training example number
+    * i is the node number in the layer
+* Formula for a of all the nodes is same, but the value of w and b will be different
+
+### For 1 Training example:
+* Nodes are stacked vertically in a matrix
+* Pixel values (neurons) are stacked vertically [x1] with p such rows from x1 to xp
+* Weights are stacked as: [w1 w2 w3.....wp] with i such rows.
+* Biases are stacked as [b1] with i such rows.
+* Shape of A and Z matrix such formed is (i,1) 
+* W<sup>[1]</sup>.shape = (i,p)
+* A<sup>[1]</sup>.shape = (i,1)
+* W<sup>[2]</sup>.shape = (1,i)
+* A<sup>[2]</sup>.shape = (1,1)
+
+### **Note:** The input for 2nd (output) layer is the output of 1st layer (i.e. X<sup>[2]</sup> = A<sup>[1]</sup>)
+
+### For m Training example:
+* Nodes are stacked vertically in a matrix.
+* Pixel values (neurons) are stacked vertically [x1] with p such rows from x1 to xp, with m such columns.
+* Weights are stacked as: [w1 w2 w3.....wp] with i such rows.
+* Biases are stacked as [b1] with i such rows, and m such columns
+* Shape of A and Z matrix such formed is (i,m) 
+* W<sup>[1]</sup>.shape = (i,p)
+* A<sup>[1]</sup>.shape = (i,m)
+* W<sup>[2]</sup>.shape = (1,i)
+* A<sup>[2]</sup>.shape = (1,1)
+---
+
+## Structure of Neural Network:
+![Neural Network Structure](Assets/Neural_Network_Structure.png)
+
+># Activation Functions for Neural Network:
+* 2 activation functions are required for 2 layered network (one for each Z).
+* Activation functions available:
+    * **sigmoid (0 to 1)**
+    * **ReLU (0 to 1)**
+    * **Leaky ReLU** (slope is very small for Negative Z and 1 for Positive Z)
+    * **tanh (-1 to 1)**
+* tanh is generally superior to sigmoid.
+### **Note:** tanh cannot be used in the output layer (Z2) because the value of A obtained will be between -1 to 1 while that of Training labels (Y) is 0 or 1.
+**Downside of sigmoid and tanh:**
+* If the value of Z is very small or very large, the slope is almost 0, hence the gradient descent is very low, which leads to slow learning. 
+* Alternative is ReLU where the slope 0 for negative Z and the slope is 1 for positive values of Z.
+
+># Derivatives of Activation Functions:
+![Derivatives of Activation Functions](Assets/Activation_Function_Derivatives.jpg)
+
+## **Initialization of weights and biases:**
+* W1 and W2 is not initialized to 0, instead initialize it **Randomly**
+    * np.random.randn(i,p)*0.01 and np.random.randn(1,i)*0.01
+* B1 and B2 can be initialized to 0.
