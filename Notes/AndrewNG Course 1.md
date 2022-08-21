@@ -214,3 +214,10 @@
 * W1 and W2 is not initialized to 0, instead initialize it **Randomly**
     * np.random.randn(i,p)*0.01 and np.random.randn(1,i)*0.01
 * B1 and B2 can be initialized to 0.
+---
+# Multiple Layer Network:
+* Use **for** loop for layers 1 to L-1 where L is the total number of layers in the network.
+* ReLU function is commonly used for hidden layers.
+* The output layer consists of sigmoid function in case Y is between 0 and 1.
+* Rest is similar toh Single layer neural network.
+* Use a **"cache" list / tuple / dictionaries** to store data from previous layers.
