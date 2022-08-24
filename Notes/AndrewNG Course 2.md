@@ -60,3 +60,21 @@
 ![Single layer CNN](/Assets/single_layer_cnn.png)
 
 * Hence the number of parameters does no depend on the size of the input, but instead depends on the number of filters/nodes and the size of each filter.
+
+### Example:
+![Example of CNN](/Assets/Example_of_CNN.png)
+
+## Types of layers:
+* Convolutional
+* Pooling
+* Fully Connected (FC)
+
+>## Pooling:
+### Max Pooling:
+* The filter used if max filter, which just finds the max value in the corresponding apart of image.\
+Eg:![Example of Pooling layer](/Assets/Pooling_layer_Example.png)
+
+## Note: A pooling layer does not have any parameters, so gradient descent is not applicable to this layer.
+
+### Average Pooling:
+* Instead of max in the above mentioned step, avg is taken.
