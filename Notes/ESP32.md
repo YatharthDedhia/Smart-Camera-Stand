@@ -81,3 +81,6 @@ Functions:
 ># Code:
 * **printf**: Used to output to console/terminal when USB/computer is connected.
 * **ESP_LOGI**: Used to output when USB/computer is not connected. It can output over wifi, bluetooth etc. 
+---
+># Communication Protocols:
+## [Refer to Slides](https://docs.google.com/presentation/d/1DJGeV_7yz8wsqzHvE1TDS29L2wV2Nblq/edit#slide=id.p66)
