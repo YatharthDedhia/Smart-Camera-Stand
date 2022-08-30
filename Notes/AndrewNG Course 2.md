@@ -78,3 +78,87 @@ Eg:![Example of Pooling layer](/Assets/Pooling_layer_Example.png)
 
 ### Average Pooling:
 * Instead of max in the above mentioned step, avg is taken.
+---
+># Week 2
+
+## LeNet-5:
+Structure:
+
+![LeNet5 Structure](/Assets/LeNet_5_structure.png)
+
+* Old Network
+* Realtively low number of parameters compared to today's standards.
+* Dimension of image goes on decreasing.
+* Number of channels goes on increasing.
+---
+## AlexNet:
+Structure:
+![Structure of Alexnet](/Assets/AlexNet.png)
+
+* Bigger network than LeNet.
+
+---
+![Comparison](/Assets/Comparison_image_neural_networks.svg
+)
+
+---
+## VGG-16:
+![Structure of VGG-16](/Assets/VGG16.png)
+
+* Very Big Network
+* Simple trend od doubling channels and half dimensions
+---
+# **ResNets (Residual Networks):**
+* Helps to train deep models.
+* In a multi layered network, the input or any layer output A(l) is added to the A(l+i) layer output and then passed through the activation function, thus creating 2 paths, shortcut and main.
+Structure:
+![Structure of ResNet](/Assets/resnets.png)
+* Any number of layers can be skipped.
+* A(l) is added to Z(l+i) and the result is passed through activation function.
+
+Example:
+![ResNets Example](/Assets/resnets2.png)
+
+---
+# **Network in Network: (1x1 Conv)**
+* 1x1 convolution is used with same number of channels as the input image.
+* Thus it helps in reducing the number of channels of the image.
+* The output image is of the same height anad width but its no. of channels = number of filters applied.
+* After applying 1x1 conv, ReLU is applied, thus reducing the number of channels to 1 neuron for each filter applied.
+![Structure of 1x1 Conv](/Assets/1x1conv.png)
+
+---
+# **Inception Network:**
+* Multiple combinations of filters and pooling layers are applied of different filter size and the output of each filter operation is stacked as channels.
+* Thus the output of each filter needs to be of same height and width, in order to add to the channels. For this reason, **same padding** is applied in each filter convolution.
+* This increases the computation.
+* To reduce the computational cost, 1x1 convolution can be applied before applying inception, hence reducing the number of channels for performing convolution/pooling on.
+* The output from the 1x1 conv is referred to as bottle-neck layer, as the layer has the least number of channels in the network, as the number of channels increases again after applying inception.
+* Sometimes the output from some of the layers is directly used to make prediction by passing it to softmax layer along with the output of the FC (Fully-Connected) layer.
+
+Example:
+![Inception Example](/Assets/Inception_module.png)
+
+* In an inception network, multiple inception module may be used.
+---
+# **MobileNet:**
+* It is used to do computation in low compute power applications, like microprocessors, mobile phones, etc.
+## Depthwise Convolution:
+* Individual 2D filters are applied to each channel of the input image.
+* The number of filters used = number of channels in input image.
+* The number of channels in output image will be same as well.
+![Depthwise Conv](/Assets/Depthwise_conv.png
+)
+## Pointwise Convolution:
+* 1x1xnc filter is used with nc' such filters.
+* the number of channels in output image will be nc'
+---
+# MobileNet V1
+* It used 13 layers with each layer containing 1 depthwise and 1 pointwise convolution. After this, the output of the 13 layers was pooled and then passed through FC and softmax.
+
+# MobileNet V2:
+* It is a combination of ResNet and MobileNet V1.
+    ![Structure of MobileNet V2](/Assets/MobileNetV2.png)
+## Structure:
+![Structure of MobileNet V1 and V2](/Assets/MobileNet.png)
+
