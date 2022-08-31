@@ -162,3 +162,24 @@ Example:
 ## Structure:
 ![Structure of MobileNet V1 and V2](/Assets/MobileNet.png)
 
+---
+># **Object Detection:**
+* Detection involves detecting what all objects the image contains.
+* Localization involves finding where the objects are located in the image using bounding boxes.
+* For this purpose, multiple softmax output labels are used. eg:
+    * class labels    
+    * Bounding box centre x (bx)
+    * Bounding box centre y (by)
+    * width of box (bw)
+    * height of box (bh)
+* the image has top left corner value (0,0) and the bottom right corner is assumed to be (1,1).
+* Hence the values of x and y of the bounding box will be between 0 and 1.
+* Loss for each output label is calculated as:L = (y1-y1hat)<sup>2</sup> + (y2-y2hat)<sup>2</sup> + (y3-y3hat)<sup>2</sup>....
+
+## Sliding Window Detection:
+* A small filter/ window is passed over the image with some stride, and each window is run through the above softmax and has several output labels.
+* This is done convolutionally, as shown:
+![Convolutional Sliding Windows](/Assets/sliding_windows.png)
+* Thus each pixel in the output corresponds to each window.
+* The above example shows only 4 output labels, denoted as channels of the output image. There can be more channels/output labels through the softmax layer too.
+* This is faster and requires lesser number of computations than using a for loop to loop through each window.
