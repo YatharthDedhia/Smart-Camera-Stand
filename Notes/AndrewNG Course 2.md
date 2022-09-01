@@ -183,3 +183,58 @@ Example:
 * Thus each pixel in the output corresponds to each window.
 * The above example shows only 4 output labels, denoted as channels of the output image. There can be more channels/output labels through the softmax layer too.
 * This is faster and requires lesser number of computations than using a for loop to loop through each window.
+
+## Intersection Over Union (IOU):
+* It is used to calculate the accuracy of the prediction by calculating the ratio of intersection and union of the output bounding box and the ground truth.
+* Its value is one for the most accurate prediction.
+* Correct threshold can be set to 0.5, so boxes with IOU less than 0.5 are eliminated.
+
+## Non-Max Suppression:
+* Multiple grid cells might output that the centre of the car is present in the grid cell, but in reality only 1 gridcell must contain the centre.
+* To eliminate this, only the grid cell with the highest probability / output label is considered, and others are suppressed.
+
+## Anchor-Boxes:
+* This needs to be used in case of one grid cell containing multiple objects.
+* Pre-defined anchor box shapes are made and the output for these boxes are stored with the same grid cell, hence the number of channels are increased to the **(number_of_anchor_boxes * the_number_of_output_labels in each anchor box)**.
+* This does not work well in case of more number of objects present than the number of anchor boxes present, or in case multiple objects have the same shape of anchor box.
+
+## YOLO Algorithm:
+* First generate grid cells of dimensions eg: 19X19
+* Each grid cells gives some output labels. Hence the number of channels in the output will be **output_labels*no_of_anchor_boxes**.
+* For each grid cell get 2 bounding boxes.
+* Remove all the boxes with low probability.
+* Run non-max suppression for each output class.
+
+
+## Region Based proposal (R-CNN):
+* First the input image is put through image segmentation algorithm.
+* Then the detection algorithm is performed only on few of the segmented parts of the image, and not all the windows of the image.
+* It is relatively slower.
+
+## Semantic Segmentation:
+* It detects the edges of the object instead of just bounding boxes.
+* Each pixel is clasiified as whether it belongs to object or not.
+* For this the output labels matrix should be of the same size as that of the input.
+* This is done using Transpose conv after CNN.
+![Semantic Segmentation](/Assets/Semantic_segmentation.png)
+
+## Transpose Conv:
+* A small input image is output into a larger image using this convolution.
+* Stride padding and filter size is first decided.
+* The value of each pixel of the input image is multiplied to all the pixels of the filter, and the output is put into the output matrix.
+* In case of 0 padded parts of the output matrix, those parts are set to 0.
+*  Then the 2nd pixel of the input image is multiplied to the filter and the same process is repeated but with a stride.
+* The pixels of the output image overlapping with the previous one are added.
+* This is done for all the pixels of the input image.
+
+## U-Net Architecture:
+* Skip connections similar to the ones in ResNet is used along with Transpose Conv and CNN.
+
+![U-Net Structure](/Assets/U_Net.png)
+
+* The **input image** is shown as a **sideways view**, hence the number of channels of the image becomes the width of the **input matrix**, the width of the image becomes the number of channels of the input matrix, the height remains same in both.
+* Consecutive Conv and ReLU is applied along with MaxPool.
+* This reduces the height of the input matrix and increases its width(no of channels of the input image).
+* Hence now transpose conv is applied to increase the height again, and along with that, corresponding Shortcut path is added.
+* This process is repeated until the output image is of the same size as that of the Input image.
+* The number of channels in the output image is equal to the number of classes/segments.
