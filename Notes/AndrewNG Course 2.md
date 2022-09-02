@@ -238,3 +238,55 @@ Example:
 * Hence now transpose conv is applied to increase the height again, and along with that, corresponding Shortcut path is added.
 * This process is repeated until the output image is of the same size as that of the Input image.
 * The number of channels in the output image is equal to the number of classes/segments.
+---
+# Face Detection:
+## One Shot Detection:
+* Prediction needs to be made based on only 1 training example.
+* This is done by comparing similarity/difference of the test image from different training images.
+
+## Siemese Network:
+* First face (x1) is passed through a neural network, let the output vector or encoding be f(x1).
+* The second face(x2) is passed through the same network having the same parametrs. Let the output vector/encoding obtained be f(x2).
+* The difference between the two image encodings is then defined as d(x1,x2)= |f(x1)-f(x2)|<sup>2</sup>
+* The parameters are learned such that the d for 2 images of the same person is minimum.
+* If d between 2 images is very large then they are different people.
+
+## Triplet Loss:
+* 3 images are compared at once.
+    * 1st is Anchor Image (A)
+    * 2nd is Positive Image (image of the same person as that of anchor image) (P)
+    * 3rd is Negative Image (image of a different person than the other 2) (N)
+* The d between A and P should be minimum and the d between A and N should be maximum.
+    ### d(A,P)<=d(A,N) or d(A,P)-d(A,N) + alpha<=0
+* Here alpha const is called margin, and is introduced to prevent the trivial solution of all encodings of A,P and N to be 0.
+* Hence the Triplet Loss L(A,P,N) is defined as: 
+## L(A,P,N) = max(d(A,P)-d(A,N) + alpha , 0)
+* This is so that if the left part is negative, the loss is set to 0 .
+
+## Cost Function:
+* It is the sum of all the losses of triplets over all the training example.
+* The training triplets cannot be passed randomly as chances are that A and P randomly chosen are very differrnt from A and N.
+
+## Alternative to triplet loss:
+* It can also be trained using binary classification.
+* 2 images are passed through the neural network and the encoding (output vectors) are calculated.
+* The elemental differences between the 2 encodings can be found and their product with weight can be passed through an activation function along with margin.
+* the output will be 0 if they are same, and 1 if they are different.
+
+For better efficiency, the encoding for the different faces are pre-computed and hence do not need to be passed through the neural network, every time a person needs to be checked.
+
+# Neural Style Tranfer:
+* The initial layers of a ConvNet detect small features of an image, eg: vertical edges, etc.
+* The final or layers in the later part of the network detect broader parts of the image, eg: faces, etc.
+
+## Cost Function in NST:
+* The cost of the genererated image(G) consists of 2 parts: one from the content image and one from the style image.
+* J(G) = alpha X J(G,C) + beta X J(G,S)
+* First the output image(G) is generated randomly and then the pixel values are tweaked using gradient descent to find the desired output.
+* J(G,S) is calculated as the correlation between diffrent channels of the activations of a specific layer in the generated image and the style image.
+This is found by passing both the generated and style images through the same network and measuring the correlation between the activations of the diffrent channels of a particular layer in both the images.
+it is given by the formula:
+![Style Cost Function](/Assets/Style_cost_function.png)
+
+* The Content Cost Function is calculated as:
+![Content Cost Function](/Assets/Content_cost_function.png)
