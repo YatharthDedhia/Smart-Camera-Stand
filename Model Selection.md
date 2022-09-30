@@ -19,7 +19,7 @@ ResNet-50 has more number of parameters to be used so it is obvious that it will
 
 Next, we considered using MobileNetV2. MobileNetV2 is a convolutional neural network that is 53 layers deep. You can load a pretrained version of the network trained on more than a million images from the ImageNet database. MobileNetV2 is very similar to the original MobileNet, except that it uses inverted residual blocks with bottlenecking features. Its accuracy and model size are less than EfficientNet.
 
-## EfficientNet-Lite0
+## EfficientNetLite0
 
 We then considered using EfficientNetLite0. It is better than other EfficientNet networks due to the following reasons:
 - Removed squeeze-and-excitation networks since they are not well supported
@@ -33,7 +33,7 @@ After analysing the performance and model size of various models, we decided to 
 
 ## Using MobileNetV2
 
-After using EfficientNetLite0, our model size was around 41Mb even after quantization. We could not prune our model as pruning is not supported in the Tensorflow Lite API. We tried looking for some alternative but at the end, decided to switch to MobileNetV2 as the model size is smaller than EfficientNetLite0 and we can prune our MobileNetV2 model. 
+After using EfficientNetLite0, our model size was around 41Mb even after quantization. We could not prune our model as pruning is not supported in the Tensorflow Lite API. We tried looking for some alternatives but at the end, decided to switch to MobileNetV2 as the model size is smaller than EfficientNetLite0 and we can prune our MobileNetV2 model. 
 Later, after pruning and quantizing our MobileNetV2 model, the model size was reduced to around 16Mb. Even after this, we could not use this model as we have to run our model on ESP32. In the end, we used the Object Detection model provided by Espressif for ESP32 models. 
 
 
