@@ -41,6 +41,37 @@ The microcontroller should be able to process a lightweight TinyML object classi
 ---
 
 # File Structure:
+```
+├── Assets
+│   ├── Classes_cifar_100.png
+│   └── superclasses.png
+├── ESP32_CAM_Pin_Connections.md
+├── ESP-WHO
+│   ├── components
+│   │   ├── bus
+│   │   ├── esp32-camera
+│   │   ├── esp-code-scanner
+│   │   ├── esp-dl
+│   │   ├── esp-sr
+│   │   ├── fb_gfx
+│   │   ├── modules
+│   │   └── screen
+│   ├── human_face_detection
+│   ├── img
+│   ├── README.md
+│   └── tools
+├── Image_Classification
+│   ├── Dataset
+│   │   ├── CIFAR_100_dataset.ipynb
+│   │   ├── Dataset_preparation.md
+│   │   ├── Images
+│   │   └── README.md
+│   ├── EfficientNetLite0
+│   │   └── EfficientNetLite0Spec.ipynb
+│   ├── MobileNetV2
+│   └── Model_Selection.md
+└── README.md
+```
 
 ---
 
