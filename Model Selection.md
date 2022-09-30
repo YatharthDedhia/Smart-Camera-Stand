@@ -11,17 +11,18 @@ ResNet-50 has more number of parameters to be used so it is obvious that it will
 but we can noticed that the MobileNet model became more accurate on increasing the number of epochs.
 
 ## ResNet 50
-![image](https://user-images.githubusercontent.com/111455150/189772554-8e8b9561-6dc5-4e05-838c-cb2ab43931c5.png)
+![image](https://miro.medium.com/max/1400/0*tH9evuOFqk8F41FG.png)
 
 ResNet-50 is a convolutional neural network that is 50 layers deep. You can load a pretrained version of the network trained on more than a million images from the ImageNet database.
 ResNet-50 has more number of parameters to be used so it is obvious that it will show better performance as compared to other Networks but due to a large number of parameters, the model size is large. As we will have to run our model on Esp32, ResNet-50 is not suitable for us.
 
 ## MobileNetV2
-![image](https://user-images.githubusercontent.com/111455150/189772608-43faf67c-a9d5-4790-ba52-787997728388.png)
+![image](https://user-images.githubusercontent.com/114467415/193272087-c540a9d3-1248-41c9-b498-7301dc6079ba.png)
 
 Next, we considered using MobileNetV2. MobileNet-v2 is a convolutional neural network that is 53 layers deep. You can load a pretrained version of the network trained on more than a million images from the ImageNet database. MobileNetV2 is very similar to the original MobileNet, except that it uses inverted residual blocks with bottlenecking features. Its accuracy and model size is less than EfficientNet.
 
 ## EfficientNet-Lite0
+
 We then considered using EfficientNet-Lite0. It is better than other EfficientNet networks due to the following reasons:
 - Removed squeeze-and-excitation networks since they are not well supported
 - Replaced all swish activations with RELU6, which significantly improved the quality of post-training quantization
@@ -35,7 +36,7 @@ After analysing the performance and model size of various models, we decided to 
 ## Using MobileNetV2
 
 After using EfficientNet-Lite0, our model size was around 41Mb even after quantization. We could not prune our model as pruning is not supported in the Tensorflow Lite API. We tried looking for some alternative but at the end, decided to switch to MobileNetV2 as the model size is smaller than EfficientNetV2 and we can prune our MobileNetV2 model. 
-Later, after pruning and quantizing our MobileNetV2 model, the model size was reduced to 15.5Mb. Even after this, we cannot use this model as we have to run our model on esp-32
+Later, after pruning and quantizing our MobileNetV2 model, the model size was reduced to 15.5Mb. Even after this, we cannot use this model as we have to run our model on esp-32. In the end, we decided to use the object detection 
 
 
 Reference:
