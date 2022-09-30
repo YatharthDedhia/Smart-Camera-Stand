@@ -8,10 +8,10 @@ This project aims to make a self-sufficient phone stand with it's own camera and
 ---
 
 # Table of Contents:
-* About the project
-    * Tech Stack
-    * File Structure
-* Getting Started
+* [About the project]()
+    * [Tech Stack]()
+    * [File Structure]()
+* [Getting Started]()
 
 ---
 
@@ -28,11 +28,11 @@ The microcontroller should be able to process a lightweight TinyML object classi
 
 ## Tech Stack:
 * [TensorFLow](tensorflow.org)
-* ESP-32 microcontroller programming
-* Google Colab
-* Python
-* Numpy
-* C/C++
+* [Google Colab]()
+* [Numpy]()
+* [ESP32 microcontroller programming](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
+* [ESP32-CAM](https://github.com/espressif/esp32-camera) module Interfacing
+
 ---
 
 # File Structure:
@@ -51,9 +51,9 @@ Software:
 Hardware:
 * ESP32-CAM module
 * MG90 servo motor
+* USB-to-TTL converter
 * Mounts for the servo and camera 
-* Hardware set-up and pinout-connections as shown here:
-![Pinout connections]()
+* Hardware set-up and pinout-connections refer to [ESP32_CAM_Pin_Connections.md]()
 
 ## Installation:
 1. Clone the repo:
@@ -84,7 +84,35 @@ cd ESP-WHO/examples/human_face_detection_terminal
 idf.py -p (PORT) flash monitor
 ```
 
+---
+
 # Theory
 For Dataset preparation instructions and details refer to [Dataset_preparation.md](https://github.com/YatharthDedhia/Eklavya-Smart-Stand/blob/Yatharth-programs/CIFAR-100_Dataset/Dataset_preparation.md)
 
-For Model Details Refer to [Model_selection.md]()
+---
+
+# Approach
+We first explored the domain of Deep-Learning and gained knowledge about:
+* Logistic-Regression
+* Neural Networks
+* Convolutional Neural Networks
+
+We also learned about many other Neural Network architectures like LeNet-5, AlexNet, VGG-16, ResNets, Inception Networks, MobileNet etc.
+
+Based on this information, we selected EfficientNetLite0 for Image Classification.
+
+For further model details Refer to [Model_selection.md]()
+
+### Challenges:
+* EfficientNetLite0 is a relatively small sized model specially designed for TinyML applications.
+* But even after Quantizing the model, we were only able to bring its size down to 41MB due to lack of availability for Pruning on TFLite API.
+
+Thus, we then decided to go forth with MobileNetV2 as the 2nd option, as it is even smaller than EfficientNetLite 0, but has slighly lower accuracy too.
+
+MobileNetV2 being a Keras Model, supports both Pruning and Quantization with the TensorFlow API.
+
+* After training MobileNetV2 on our dataset through Transfer-Learning and applying several optimizations like Pruning and Quantizations, we were able to bring its size down to 16MB.
+
+This model is still too big to run on the 4MB RAM of the ESP32.
+
+Finally, as the last resort, we used the Object Detection model provided by Espressif for ESP32 models
