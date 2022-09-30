@@ -2,17 +2,22 @@
 
 This project aims to make a self-sufficient phone stand with it's own camera and microcontroller that can track a person and rotate the stand in 2-axes to follow the person primararily in frame. 
 
-#### **Mentors** : Sarrah, Marck, Aniruddha
-#### **Mentees** : Medha Sati, Yatharth Dedhia
-
 ---
 
 # Table of Contents:
-* [About the project]()
-    * [Tech Stack]()
-    * [File Structure]()
-* [Getting Started]()
-
+* [About the project](#about-the-project)
+    * [Tech Stack](#tech-stack)
+    * [File Structure](#file-structure)
+* [Getting Started](#getting-started)
+    * [Prerequisites](#prerequisites)
+    * [Installation](#installation)
+    * [Execution](#execution)
+* [Theory](#theory)
+* [Approach](#approach)
+* [Future Work](#future-work)
+* [Contributors](#contributors)
+* [Acknowledgements and Resources](#acknowledgements-and-resources)
+* [License](#license)
 ---
 
 # About The Project:
@@ -53,7 +58,7 @@ Hardware:
 * MG90 servo motor
 * USB-to-TTL converter
 * Mounts for the servo and camera 
-* Hardware set-up and pinout-connections refer to [ESP32_CAM_Pin_Connections.md]()
+* Hardware set-up and pinout-connections (refer to [ESP32_CAM_Pin_Connections.md](https://github.com/YatharthDedhia/Eklavya-Smart-Stand/blob/Yatharth-programs/ESP32_CAM_Pin_Connections.md))
 
 ## Installation:
 1. Clone the repo:
@@ -87,7 +92,13 @@ idf.py -p (PORT) flash monitor
 ---
 
 # Theory
-For Dataset preparation instructions and details refer to [Dataset_preparation.md](https://github.com/YatharthDedhia/Eklavya-Smart-Stand/blob/Yatharth-programs/CIFAR-100_Dataset/Dataset_preparation.md)
+Image Classification refers to recognising the different classes present in a frame.
+
+In this project, we use Image Classification to recognise whether a person is present in the frame or not, hence we will be using a Binary Classification model for the same.
+
+For Dataset preparation instructions and further details refer to [Dataset_preparation.md](https://github.com/YatharthDedhia/Eklavya-Smart-Stand/blob/Yatharth-programs/CIFAR-100_Dataset/Dataset_preparation.md)
+
+We use Object Detection models for localization of objects (humans in this case) and use other object tracking techniques to track the object through each frame in real-time.
 
 ---
 
@@ -115,4 +126,36 @@ MobileNetV2 being a Keras Model, supports both Pruning and Quantization with the
 
 This model is still too big to run on the 4MB RAM of the ESP32.
 
-Finally, as the last resort, we used the Object Detection model provided by Espressif for ESP32 models
+Finally, we used the [Object Detection model](https://github.com/espressif/esp-who) provided by Espressif which is especially optimised for ESP32 microcontroller.
+
+This model outputs bounding box coordinates when a person is detected, along with the location of eyes,nose,mouth of the person.
+
+Hence we now use this data to track the person in real time and rotate the camera using Servos in order to keep the person in frame at all times.
+
+---
+
+# Future Work
+Implement 2-Axis Rotation and Tracking, and exploring various other Deep-Learning models and Object Tracking techniques to improve the accuracy and latency of the device.
+
+---
+
+# Contributors
+* [Yatharth Dedhia](https://github.com/YatharthDedhia)
+* [Medha Sati](https://github.com/MedhaSati2002)
+
+---
+
+# Acknowledgements and Resources
+* [SRA-VJTI](https://github.com/SRA-VJTI) for providing great opportunity and guidance throughout this project
+* [ESP-WHO](https://github.com/espressif/esp-who) Object Detection model for ESP32-CAM
+* [TensorFlow](https://www.tensorflow.org/) Documentation and Examples
+* [TensorFlow Lite](https://www.tensorflow.org/lite) Documentation and Examples
+* [Deep Learning Courses](https://www.coursera.org/specializations/deep-learning)  on Coursera by Andrew NG
+* [Espressif ESP32 Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html)
+
+Special thanks to our Mentors : [Sarrah Bastawala](https://github.com/sarrah-basta), [Marck Koothoor]() and [Aniruddha Thakare]()
+For providing constant guidance and support in this project.
+
+---
+
+# License
