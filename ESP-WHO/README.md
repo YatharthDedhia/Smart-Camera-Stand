@@ -1,15 +1,10 @@
-# ESP-WHO [[中文]](./README_CN.md)
+# ESP-WHO
 
 ESP-WHO is an image processing development platform based on Espressif chips. It contains development examples that may be applied in practical applications.
 
 ## Overview
 
 ESP-WHO provides examples such as Human Face Detection, Human Face Recognition, Cat Face Detection, Gesture Recognition, etc. You can develop a variety of practical applications based on these examples. ESP-WHO runs on ESP-IDF. [ESP-DL](https://github.com/espressif/esp-dl) provides rich deep learning related interfaces for ESP-WHO, which can be implemented with various peripherals to realize many interesting applications.
-
-<p align="center">
-    <img width="%" src="./img/architecture_en.drawio.svg"> 
-</p>
-
 
 
 ## What You Need
@@ -53,23 +48,7 @@ Open the terminal and go to any folder that stores examples (e.g. examples/human
 idf.py set-target esp32
 ```
 
-
-
-### Step 2: Configure the camera
-
-If not using the Espressif development boards mentioned in [Hardware](#Hardware), configure the camera pins manually. Enter `idf.py menuconfig` in the terminal and click (Top) -> Component config -> ESP-WHO Configuration to enter the ESP-WHO configuration interface, as shown below:
-
-![](./img/esp-who_config.png)
-
-Click Camera Configuration to select the pin configuration of the camera according to the development board you use, as shown in the following figure:
-
-![](./img/esp-who_config_camera_config_select_pinout.png)
-
-If the board you are using is not shown in the figure above, please select ``Custom Camera Pinout`` and configure the corresponding pins correctly, as shown in the following figure: 
-
-![](./img/esp-who_config_camera_config_custom.png)
-
-### Step 3: Launch and monitor
+### Step 2: Launch and monitor
 
 Flash the program and launch IDF Monitor:
 
