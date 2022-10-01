@@ -71,8 +71,4 @@
 /home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/ulp/libulp.a
 /home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 /home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/main/libmain.a
-/home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/bus/libbus.a
-/home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/esp-sr/libesp-sr.a
-/home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/fb_gfx/libfb_gfx.a
-/home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/screen/libscreen.a
 /home/yatharthdedhia/ESP-WHO/human_face_detection/build/esp-idf/modules/libmodules.a

@@ -42,50 +42,20 @@ git clone --recursive https://github.com/espressif/esp-who.git
 
 > Remember to use ``git submodule update --recursive --init`` to pull and update submodules of ESP-WHO.
 
-## Run Examples
-
-All examples of ESP-WHO are stored in [examples](./examples) folder. Structure of this folder is shown below:
-
-```bash
-├── examples
-│   ├── cat_face_detection          // Cat Face Detection examples
-│   │   ├── lcd                     // Output displayed on LCD screen
-│   │   ├── web                     // Output displayed on web
-│   │   └── terminal                // Output displayed on terminal
-│   ├── code_recognition            // Barcode and QR Code Recognition examples
-│   ├── human_face_detection        // Human Face Detection examples
-│   │   ├── lcd
-│   │   ├── web
-│   │   └── terminal
-│   ├── human_face_recognition      // Human Face Recognition examples
-│   │   ├── lcd
-│   │   ├── terminal
-│   │   └── README.md               // Detailed description of examples
-│   └── motion_detection            // Motion Detection examples
-│       ├── lcd 
-│       ├── web
-│       ├── terminal
-│       └── README.rst              
-```
-
-For the development boards mentioned in [Hardware](#Hardware), all examples are available out of the box. To run the examples, you only need to perform [Step 1: Set the target chip] (#Step-1 Set the target chip) and [Step 4: Launch and monitor] (#Step-4 Launch and monitor).
+## Run Human Face Detection
+To run human_face_detection, you only need to perform [Step 1: Set the target chip] (#Step-1 Set the target chip) and [Step 4: Launch and monitor] (#Step-4 Launch and monitor).
 
 ### Step 1: Set the target chip
 
 Open the terminal and go to any folder that stores examples (e.g. examples/human_face_detection/lcd). Run the following command to set the target chip: 
 
 ```bash
-idf.py set-target [SoC]
+idf.py set-target esp32
 ```
 
-Replace [SoC] with your target chip, e.g. esp32, esp32s2, esp32s3.
 
-**NOTE:** we implement examples of target chip `esp32s3` with ESP32-S3-EYE by defaults. So that `flash` and `monitor` are through USB. If you are using other board, please confirm which method you will use first,
 
-- If by USB, just keep it in defaults,
-- If by UART, set it in menuconfig.
-
-### (Optional) Step 2: Configure the camera
+### Step 2: Configure the camera
 
 If not using the Espressif development boards mentioned in [Hardware](#Hardware), configure the camera pins manually. Enter `idf.py menuconfig` in the terminal and click (Top) -> Component config -> ESP-WHO Configuration to enter the ESP-WHO configuration interface, as shown below:
 
@@ -99,28 +69,10 @@ If the board you are using is not shown in the figure above, please select ``Cus
 
 ![](./img/esp-who_config_camera_config_custom.png)
 
-### (Optional) Step 3: Configure the Wi-Fi
-
-If the output of example is displayed on web server, click Wi-Fi Configuration to configure Wi-Fi password and other parameters, as shown in the following figure: 
-
-![](./img/esp-who_config_wifi_config.png)
-
-### Step 4: Launch and monitor
+### Step 3: Launch and monitor
 
 Flash the program and launch IDF Monitor:
 
 ```bash
 idf.py flash monitor
 ```
-
-
-## Default Binaries of Development Boards
-
-The default binaries for each development board are stored in the folder [default_bin](./default_bin). You can use Flash Download Tool (https://www.espressif.com/en/support/download/other-tools) to flash binaries.
-
-
-
-## Feedback
-
-
-Please submit an [issue](https://github.com/espressif/esp-who/issues) if you find any problems using our products, and we will reply as soon as possible.
