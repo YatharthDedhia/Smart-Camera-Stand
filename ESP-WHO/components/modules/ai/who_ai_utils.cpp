@@ -61,8 +61,7 @@ static const char *TAG = "ai_utils";
     } while (0)
 
 /////////// servos //////////
-#define SERVO_A 15
-/////////////////////////////
+#define SERVO_A 15////////////////////////////
 //end pin_defs.h 
 
 typedef struct
@@ -221,71 +220,88 @@ servo_config servo_a = {
 };
 int x_coor = 0;
 int angle = 0;
-int curr_ang =0;
-// #define midpt  160;
-// #define img_w  320;
-// #define field  140;
-// int ini_angle = 0;
-// float ratio = 180/320;
+int curr_ang =85;
+
 static void mcpwm_servo_control()
 { 
 	enable_servo();
 
     printf("X_coor: %d\n",x_coor);
 
-    for (int i = 0; i < 180 ; i++)
+
+// OFFSET = 30 degrees
+// 320 width in standing pos
+
+
+// Test servo
+    // for (int i = 0; i < 85  ; i++)
+    // {
+    //     set_angle_servo(&servo_a, i);
+    //     vTaskDelay(1);  
+    // }
+
+    // for (int i = 85; i >0  ; i--)
+    // {
+    //     set_angle_servo(&servo_a, i);
+    //     vTaskDelay(1);  
+    // }
+
+
+
+//APPROACH 1
+    angle = (35*(160-x_coor))/320;
+    printf("Angle: %d",angle);
+
+    if(angle<0)
     {
-        set_angle_servo(&servo_a, i);
-        vTaskDelay(3);  
+        angle = angle*-1;
+        for (int i = curr_ang; i < curr_ang + angle ; i++)
+        {
+            set_angle_servo(&servo_a, i);
+            vTaskDelay(1);  
+        }
+        curr_ang = curr_ang+ angle;
+        printf("Current angle: %d",curr_ang);
     }
 
-    // angle = (140*(160-x_coor))/320;
+    //angle is negative wrt midpt
+    else if(angle>0)
+    {
+        for (int i = curr_ang; i > curr_ang-angle ; i--)
+        {
+            set_angle_servo(&servo_a, i);
+            vTaskDelay(1);  
+        }
+        curr_ang = curr_ang - angle;
+        printf("Current angle: %d",curr_ang);
+    }
+
+// APPROACH 2 WORKING
+    // angle = 3;
     // printf("Angle: %d",angle);
 
-    // if(angle>=0)
+    // if((160-x_coor)<0)
     // {
-    //     for (int i = curr_ang; i < angle ; i++)
+    //     for (int i = curr_ang; i < curr_ang + angle ; i++)
     //     {
     //         set_angle_servo(&servo_a, i);
     //         vTaskDelay(1);  
     //     }
-    //     curr_ang = angle;
+    //     curr_ang = curr_ang+ angle;
+    //     printf("Current angle: %d",curr_ang);
     // }
 
     // //angle is negative wrt midpt
     // else
     // {
-    //     for (int i = curr_ang; i > (70)-angle ; i--)
+    //     for (int i = curr_ang; i > curr_ang-angle ; i--)
     //     {
     //         set_angle_servo(&servo_a, i);
     //         vTaskDelay(1);  
-    //     } 
-    // }
-    // set_angle_servo(&servo_a,0);
-    // if(x_coor>120)
-    // {
-    //     angle = (120*(x_coor-120))/240;
-    //     printf("Angle +ve: %d",angle);
-    //     for (int i = curr_ang; i < curr_ang+angle; i++)
-    //     {
-    //         set_angle_servo(&servo_a, i);
-    //         vTaskDelay(3);  
     //     }
-    //     curr_ang = angle;
+    //     curr_ang = curr_ang - angle;
+    //     printf("Current angle: %d",curr_ang);
     // }
-
-    // else
-    // {
-    //     angle = (120*(120-x_coor))/240;
-    //     printf("Angle -ve: %d",angle);
-    //     for (int i = curr_ang; i > 60-angle; i--)
-    //     {
-    //         set_angle_servo(&servo_a, i);
-    //         vTaskDelay(3);  
-    //     }
-    //     curr_ang = angle;
-    // }
-    // set_angle_servo(&servo_a,180);
 }
 
 void print_detection_result(std::list<dl::detect::result_t> &results)
