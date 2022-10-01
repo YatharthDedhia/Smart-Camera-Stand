@@ -42,34 +42,45 @@ The microcontroller should be able to process a lightweight TinyML object classi
 
 # File Structure:
 ```
+.
 ├── Assets
-│   ├── Classes_cifar_100.png
-│   └── superclasses.png
+│   ├── Classes_cifar_100.png
+│   └── superclasses.png
 ├── ESP32_CAM_Pin_Connections.md
 ├── ESP-WHO
-│   ├── components
-│   │   ├── bus
-│   │   ├── esp32-camera
-│   │   ├── esp-code-scanner
-│   │   ├── esp-dl
-│   │   ├── esp-sr
-│   │   ├── fb_gfx
-│   │   ├── modules
-│   │   └── screen
-│   ├── human_face_detection
-│   ├── img
-│   ├── README.md
-│   └── tools
+│   ├── components
+│   │   ├── esp32-camera
+│   │   ├── esp-dl
+│   │   └── modules
+│   ├── human_face_detection
+│   │   ├── build
+│   │   ├── CMakeLists.txt
+│   │   ├── dependencies.lock
+│   │   ├── main
+│   │   ├── partitions.csv
+│   │   ├── sdkconfig
+│   │   ├── sdkconfig.defaults
+│   │   ├── sdkconfig.defaults.esp32
+│   │   └── sdkconfig.old
+│   ├── img
+│   │   ├── architecture_en.drawio.svg
+│   │   ├── esp-who_config_camera_config_custom.png
+│   │   ├── esp-who_config_camera_config.png
+│   │   ├── esp-who_config_camera_config_select_pinout.png
+│   │   └── esp-who_config.png
+│   └── README.md
 ├── Image_Classification
-│   ├── Dataset
-│   │   ├── CIFAR_100_dataset.ipynb
-│   │   ├── Dataset_preparation.md
-│   │   ├── Images
-│   │   └── README.md
-│   ├── EfficientNetLite0
-│   │   └── EfficientNetLite0Spec.ipynb
-│   ├── MobileNetV2
-│   └── Model_Selection.md
+│   ├── Dataset
+│   │   ├── CIFAR_100_dataset.ipynb
+│   │   ├── Dataset_preparation.md
+│   │   ├── Images
+│   │   └── README.md
+│   └── EfficientNetLite0
+│       ├── EfficientNetLite0.ipynb
+│       ├── effnet_c_array.cc
+│       ├── effnet_model_not_quant.tflite
+│       ├── effnet_model_quant_f16.tflite
+│       └── model_effnet.h
 └── README.md
 ```
 
