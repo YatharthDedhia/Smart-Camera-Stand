@@ -41,7 +41,7 @@ We also pruned and quantized our model to reduce the size. For pruning, we used 
 
 Even after this, we could not use this model as we have to run our model on ESP32. In the end, we used the human_face_detection model provided by [Espressif](https://github.com/espressif/esp-who/tree/master/examples/human_face_detection) for ESP32 models. 
 
-## Using model_data.c
+## Using model_data.cc
 
 model_data.cc is the c array of our model. Our model was made using python which is supported on ESP32. In order to run our model on ESP32, we had to convert our model to a C array. It can be run on devices the support C. The user will have to write an inference program to get live data from the source and use the model to make predictions on the data provided.
 
