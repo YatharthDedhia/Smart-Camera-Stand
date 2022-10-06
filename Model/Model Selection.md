@@ -34,13 +34,22 @@ After analysing the performance and model size of various models, we decided to 
 ## Using MobileNetV2
 
 After using EfficientNetLite0, our model size was around 41Mb even after quantization. We could not prune our model as pruning is not supported in the Tensorflow Lite API. We tried looking for some alternatives but at the end, decided to switch to MobileNetV2 as the model size is smaller than EfficientNetLite0 and we can prune our MobileNetV2 model. 
-Later, after pruning and quantizing our MobileNetV2 model, the model size was reduced to around 16Mb. Even after this, we could not use this model as we have to run our model on ESP32. In the end, we used the Object Detection model provided by Espressif for ESP32 models. 
+We also pruned and quantized our model to reduce the size. For pruning, we used the prune_low_magnitude function. This function wraps a tf.keras model or layer with pruning functionality which sparsifies the layer's weights during training. For used Dynamic range quantization method. This type of quantization, statically quantizes only the weights from floating point to integer at conversion time, which provides 8-bits of precision. After pruning and quantizing our MobileNetV2 model, the model size was reduced to around 16Mb. We also tried other quantization and pruning methods and compared the performance of our model.
+
+<img width="517" alt="image" src="https://user-images.githubusercontent.com/114467415/194197146-4716c5d3-c2d8-440e-81b2-291a84a70902.png">
 
 
-Reference:
+Even after this, we could not use this model as we have to run our model on ESP32. In the end, we used the human_face_detection model provided by [Espressif](https://github.com/espressif/esp-who/tree/master/examples/human_face_detection) for ESP32 models. 
 
-[Link](https://towardsdatascience.com/bye-bye-mobilenet-hello-efficientnet-9b8ec2cc1a9c)
+## Using model_data.c
 
-[Link](https://analyticsindiamag.com/mobilenet-vs-resnet50-two-cnn-transfer-learning-light-frameworks/)
+model_data.cc is the c array of our model. Our model was made using python which is supported on ESP32. In order to run our model on ESP32, we had to convert our model to a C array. It can be run on devices the support C. The user will have to write an inference program to get live data from the source and use the model to make predictions on the data provided.
 
-[Link](https://paperswithcode.com/model/tf-efficientnet-lite?variant=tf-efficientnet-lite3)
+
+### Reference:
+
+[Comparison between MobileNet and EfficientNet](https://towardsdatascience.com/bye-bye-mobilenet-hello-efficientnet-9b8ec2cc1a9c)
+
+[Comparison between MobileNet and ResNet](https://analyticsindiamag.com/mobilenet-vs-resnet50-two-cnn-transfer-learning-light-frameworks/)
+
+[Performance of different EfficientNet models](https://paperswithcode.com/model/tf-efficientnet-lite?variant=tf-efficientnet-lite3)
