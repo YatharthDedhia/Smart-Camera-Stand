@@ -1,8 +1,8 @@
 {
     "project_name":       "bootloader",
     "project_path":       "/home/yatharthdedhia/esp-idf/components/bootloader/subproject",
-    "build_dir":          "/home/yatharthdedhia/ESP-WHO/human_face_detection/build/bootloader",
-    "config_file":        "/home/yatharthdedhia/ESP-WHO/human_face_detection/sdkconfig",
+    "build_dir":          "/home/yatharthdedhia/Eklavya-Smart-Stand/esp-who-test/human_face_detection/build/bootloader",
+    "config_file":        "/home/yatharthdedhia/Eklavya-Smart-Stand/esp-who-test/human_face_detection/sdkconfig",
     "config_defaults":    "",
     "app_elf":            "bootloader.elf",
     "app_bin":            "bootloader.bin",

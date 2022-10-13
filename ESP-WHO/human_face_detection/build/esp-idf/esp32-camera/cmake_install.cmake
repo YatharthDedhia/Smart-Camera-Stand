@@ -1,4 +1,4 @@
-# Install script for directory: /home/yatharthdedhia/ESP-WHO/components/esp32-camera
+# Install script for directory: /home/yatharthdedhia/Eklavya-Smart-Stand/esp-who-test/components/esp32-camera
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,4 +1,4 @@
-# Install script for directory: /home/yatharthdedhia/ESP-WHO/components/esp-dl
+# Install script for directory: /home/yatharthdedhia/Eklavya-Smart-Stand/esp-who-test/components/esp-dl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

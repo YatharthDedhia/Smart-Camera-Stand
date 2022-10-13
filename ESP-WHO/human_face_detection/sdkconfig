@@ -1342,52 +1342,6 @@ CONFIG_WPA_MBEDTLS_CRYPTO=y
 # CONFIG_WPA_MBO_SUPPORT is not set
 # CONFIG_WPA_DPP_SUPPORT is not set
 # end of Supplicant
-
-#
-# ESP-WHO Configuration
-#
-
-#
-# Wi-Fi Configuration
-#
-CONFIG_ESP_HOST_NAME=""
-CONFIG_ESP_WIFI_SSID=""
-CONFIG_ESP_WIFI_PASSWORD=""
-CONFIG_ESP_WIFI_AP_SSID="ESP32-Camera"
-CONFIG_ESP_WIFI_AP_PASSWORD=""
-CONFIG_MAX_STA_CONN=1
-CONFIG_ESP_WIFI_AP_CHANNEL=""
-CONFIG_SERVER_IP="192.168.4.1"
-CONFIG_ESP_MAXIMUM_RETRY=5
-# end of Wi-Fi Configuration
-
-#
-# Camera Configuration
-#
-# CONFIG_CAMERA_MODULE_WROVER_KIT is not set
-CONFIG_CAMERA_MODULE_ESP_EYE=y
-# CONFIG_CAMERA_MODULE_ESP_S2_KALUGA is not set
-# CONFIG_CAMERA_MODULE_ESP_S3_EYE is not set
-# CONFIG_CAMERA_MODULE_ESP32_CAM_BOARD is not set
-# CONFIG_CAMERA_MODULE_M5STACK_PSRAM is not set
-# CONFIG_CAMERA_MODULE_M5STACK_WIDE is not set
-# CONFIG_CAMERA_MODULE_AI_THINKER is not set
-# CONFIG_CAMERA_MODULE_CUSTOM is not set
-# end of Camera Configuration
-
-#
-# Model Configuration
-#
-
-#
-# Face Recognition
-#
-CONFIG_MFN_V1=y
-CONFIG_S8=y
-# CONFIG_S16 is not set
-# end of Face Recognition
-# end of Model Configuration
-# end of ESP-WHO Configuration
 # end of Component config
 
 #

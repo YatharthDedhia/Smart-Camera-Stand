@@ -1,4 +1,4 @@
-# Install script for directory: /home/yatharthdedhia/ESP-WHO/human_face_detection/main
+# Install script for directory: /home/yatharthdedhia/Eklavya-Smart-Stand/esp-who-test/human_face_detection/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

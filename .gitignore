@@ -1,1 +1,7 @@
-ESP-WHO/human_face_detection/build/*
+build
+
+sdkconfig
+sdkconfig.old
+.DS_Store
+
+.vscode

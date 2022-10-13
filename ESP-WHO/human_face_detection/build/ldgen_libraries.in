@@ -70,5 +70,7 @@ $<TARGET_FILE:__idf_perfmon>
 $<TARGET_FILE:__idf_spiffs>
 $<TARGET_FILE:__idf_ulp>
 $<TARGET_FILE:__idf_wifi_provisioning>
+$<TARGET_FILE:__idf_camera>
+$<TARGET_FILE:__idf_servo>
+$<TARGET_FILE:__idf_ai>
 $<TARGET_FILE:__idf_main>
-$<TARGET_FILE:__idf_modules>
