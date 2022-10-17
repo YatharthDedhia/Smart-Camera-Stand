@@ -33,10 +33,9 @@ The microcontroller should be able to process a lightweight TinyML object classi
 
 ## Tech Stack:
 * [TensorFLow](tensorflow.org)
-* [Google Colab]()
-* [Numpy]()
-* [ESP32 microcontroller programming](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
-* [ESP32-CAM](https://github.com/espressif/esp32-camera) module Interfacing
+* [Google Colab](https://colab.research.google.com/)
+* [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/)
+* [ESP32-CAM](https://github.com/espressif/esp32-camera) and Servo module Interfacing
 
 ---
 
@@ -100,7 +99,7 @@ Hardware:
 * MG90 servo motor
 * USB-to-TTL converter
 * Mounts for the servo and camera 
-* Hardware set-up and pinout-connections (refer to [ESP32_CAM_Pin_Connections.md](https://github.com/YatharthDedhia/Eklavya-Smart-Stand/blob/Yatharth-programs/ESP32_CAM_Pin_Connections.md))
+* Hardware set-up and pinout-connections (refer to [ESP32_CAM_Pin_Connections.md](https://github.com/YatharthDedhia/Smart-Camera-Stand/blob/main/ESP32_CAM_Pin_Connections.md))
 
 ## Installation:
 1. Clone the repo:
@@ -138,7 +137,7 @@ Image Classification refers to recognising the different classes present in a fr
 
 In this project, we use Image Classification to recognise whether a person is present in the frame or not, hence we will be using a Binary Classification model for the same.
 
-For Dataset preparation instructions and further details refer to [Dataset_preparation.md](https://github.com/YatharthDedhia/Eklavya-Smart-Stand/blob/Yatharth-programs/CIFAR-100_Dataset/Dataset_preparation.md)
+For Dataset preparation instructions and further details refer to [Dataset_preparation.md](https://github.com/YatharthDedhia/Smart-Camera-Stand/blob/main/Image_Classification/Dataset/Dataset_preparation.md)
 
 We use Object Detection models for localization of objects (humans in this case) and use other object tracking techniques to track the object through each frame in real-time.
 
@@ -154,7 +153,7 @@ We also learned about many other Neural Network architectures like LeNet-5, Alex
 
 Based on this information, we selected EfficientNetLite0 for Image Classification.
 
-For further model details Refer to [Model_selection.md]()
+For further model details Refer to [Model_selection.md](https://github.com/YatharthDedhia/Smart-Camera-Stand/blob/final/Image_Classification/Model_Selection.md)
 
 ### Challenges:
 * EfficientNetLite0 is a relatively small sized model specially designed for TinyML applications.
@@ -175,6 +174,12 @@ This model outputs bounding box coordinates when a person is detected, along wit
 Hence we now use this data to track the person in real time and rotate the camera using Servos in order to keep the person in frame at all times.
 
 ---
+# Results
+Final Design:
+![image](/Assets/Final_Design.jpeg)
+
+2-Axis Demo-Video:
+![video](/Assets/two_axis_demo.gif)
 
 # Future Work
 Implement 2-Axis Rotation and Tracking, and exploring various other Deep-Learning models and Object Tracking techniques to improve the accuracy and latency of the device.
