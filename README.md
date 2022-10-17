@@ -176,10 +176,13 @@ Hence we now use this data to track the person in real time and rotate the camer
 ---
 # Results
 Final Design:
-![image](/Assets/Final_Design.jpeg)
+![Final Design](/Assets/Final_Design.jpeg)
 
-2-Axis Demo-Video:
-![video](/Assets/two_axis_demo.gif)
+1-Axis Demo:
+![1-Axis Demo](/Assets/one_axis_demo.mp4)
+
+2-Axis Demo:
+![2-Axis Demo](/Assets/two_axis_demo.mp4)
 
 # Future Work
 Implement 2-Axis Rotation and Tracking, and exploring various other Deep-Learning models and Object Tracking techniques to improve the accuracy and latency of the device.
